@@ -1,0 +1,7 @@
+Flask>=1.0.0
+cloudant==2.13.0
+opencv-python>=4.5.2
+pillow>=8.2.0
+tensorflow
+numpy~=1.19.2
+

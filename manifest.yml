@@ -1,0 +1,5 @@
+---
+applications:
+ - name: ibmhackglobal
+   random-route: true
+   memory: 2GB
