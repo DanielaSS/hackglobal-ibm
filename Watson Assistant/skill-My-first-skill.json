@@ -1,0 +1,1378 @@
+{
+  "intents": [
+    {
+      "intent": "caso",
+      "examples": [
+        {
+          "text": "Queja"
+        },
+        {
+          "text": "Reclamo"
+        },
+        {
+          "text": "Sugerencia"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Documento",
+      "examples": [
+        {
+          "text": "123456"
+        },
+        {
+          "text": "123489"
+        }
+      ]
+    },
+    {
+      "intent": "Estado_solicitud",
+      "examples": [
+        {
+          "text": "¿Cómo va mi trámite?"
+        },
+        {
+          "text": "estado de mi solicitud"
+        },
+        {
+          "text": "respuesta a mi solicitud"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Saludar",
+      "examples": [
+        {
+          "text": "buenas noches"
+        },
+        {
+          "text": "buenas tardes"
+        },
+        {
+          "text": "Buen dia"
+        },
+        {
+          "text": "Buenos días"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Hola"
+        },
+        {
+          "text": "qué tal?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Saludar_Caso",
+      "examples": [
+        {
+          "text": "."
+        },
+        {
+          "text": "..."
+        }
+      ]
+    },
+    {
+      "intent": "Tarjeta",
+      "examples": [
+        {
+          "text": "debito"
+        },
+        {
+          "text": "tarjeta"
+        },
+        {
+          "text": "tarjeta de crédito"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "afirmativo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "afirmativo",
+          "synonyms": [
+            "si, ok, claro"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "documento",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "id",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "ID",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "0",
+          "synonyms": []
+        },
+        {
+          "type": "patterns",
+          "value": "Identificacion",
+          "patterns": [
+            "\\d{10}"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "inicio",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "atencion",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "negativo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "negativo",
+          "synonyms": [
+            "nada",
+            "no"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "nombre",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "producto",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "producto",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Queja",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Queja",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "salir",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Salir",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "tarjeta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "tarjeta",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Tipo_Tarjeta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Crédito_MasterCard",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Crédito_Visa",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Debito_MasterCard",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Debito_Visa",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tu respuesta no es clara para mi.\nPor favor responde nuevamente."
+              },
+              {
+                "text": "No entiendo lo que quieres decir, por favor inténtalo nuevamente."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_8_1622657374089",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1622666948519",
+      "context": {
+        "ID": "@ID.literal"
+      },
+      "conditions": "@ID.literal",
+      "event_name": "input",
+      "dialog_node": "handler_10_1622666948558"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "¿Cuál es el número de identificación?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_2_1622669221880",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1622669221913",
+      "previous_sibling": "handler_2_1622669221913"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1622669221880",
+      "context": {
+        "ID": "@ID.literal"
+      },
+      "conditions": "@ID.literal",
+      "event_name": "input",
+      "dialog_node": "handler_2_1622669221913"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "¿Cual es el número de identificación?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_2_1622666948519",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1622666948558",
+      "previous_sibling": "handler_10_1622666948558"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Su solicitud se encuentra en estudio. Uno de nuestros asesores se pondrá en contacto con usted en breve."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1622665021079",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_10_1622665415709"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Su solicitud se encuentra en estudio. Uno de nuestros asesores se pondrá en contacto con usted en breve."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1622688868503",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_10_1622688868506"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1622688868503",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_11_1622688868506",
+      "previous_sibling": "node_10_1622688868506"
+    },
+    {
+      "type": "standard",
+      "title": "Debito_Visa",
+      "output": {
+        "generic": [
+          {
+            "title": "Así se verá tu tarjeta",
+            "source": "https://www.bbva.com.co/content/dam/public-web/global/images/micro-illustrations/current_account_dark.svg",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1622664776788",
+      "conditions": "@Tipo_Tarjeta:Debito_Visa",
+      "dialog_node": "node_1_1622665021079"
+    },
+    {
+      "type": "frame",
+      "title": "Atención",
+      "output": {
+        "generic": [
+          {
+            "title": "¿En qué puedo ayudarte?",
+            "options": [
+              {
+                "label": "Solicitud de productos",
+                "value": {
+                  "input": {
+                    "text": "producto"
+                  }
+                }
+              },
+              {
+                "label": "Quejas",
+                "value": {
+                  "input": {
+                    "text": "queja"
+                  }
+                }
+              },
+              {
+                "label": "Reclamos",
+                "value": {
+                  "input": {
+                    "text": "reclamo"
+                  }
+                }
+              },
+              {
+                "label": "Sugerencias",
+                "value": {
+                  "input": {
+                    "text": "sugerencia"
+                  }
+                }
+              },
+              {
+                "label": "Dudas / Inquietudes",
+                "value": {
+                  "input": {
+                    "text": "duda"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@inicio",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1622669804107",
+      "previous_sibling": "node_6_1622668897343"
+    },
+    {
+      "type": "standard",
+      "title": "Solicitud_ Tarjeta",
+      "output": {
+        "generic": [
+          {
+            "title": "¿Qué tarjeta desea solicitar?",
+            "options": [
+              {
+                "label": "Débito Visa",
+                "value": {
+                  "input": {
+                    "text": "Debito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Crédito Visa",
+                "value": {
+                  "input": {
+                    "text": "Credito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Débito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Debito_MasterCard"
+                  }
+                }
+              },
+              {
+                "label": "Crédito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Credito_MasterCard"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_2_1622673791526",
+      "conditions": "@tarjeta",
+      "dialog_node": "node_1_1622688209215"
+    },
+    {
+      "type": "standard",
+      "title": "Debito_MasterCard",
+      "output": {
+        "generic": [
+          {
+            "title": "Partes de una tarjeta Debito.",
+            "source": "https://www.bbva.com.co/content/dam/public-web/colombia/images/blog/anverso-tarjeta.png.img.768.1597841",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1622688209215",
+      "conditions": "@Tipo_Tarjeta:Debito_MasterCard",
+      "dialog_node": "node_12_1622689130066",
+      "previous_sibling": "node_2_1622688209220"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Su solicitud se encuentra en estudio. Uno de nuestros asesores se pondrá en contacto con usted en breve."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_12_1622689130066",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_13_1622689130069"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_12_1622689130066",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_14_1622689130069",
+      "previous_sibling": "node_13_1622689130069"
+    },
+    {
+      "type": "standard",
+      "title": "Credito_MasterCard",
+      "output": {
+        "generic": [
+          {
+            "title": "Beneficios de tu tarjeta",
+            "source": "https://i2.wp.com/lopezdoriga.com/wp-content/uploads/2019/12/psx-20191227-112820-1.jpg?resize=980%2C550&ssl=1",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1622688209215",
+      "conditions": "@Tipo_Tarjeta:Crédito_MasterCard",
+      "dialog_node": "node_15_1622689206158",
+      "previous_sibling": "node_12_1622689130066"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Su solicitud se encuentra en estudio. Uno de nuestros asesores se pondrá en contacto con usted en breve."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_15_1622689206158",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_16_1622689206160"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_15_1622689206158",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_17_1622689206160",
+      "previous_sibling": "node_16_1622689206160"
+    },
+    {
+      "type": "frame",
+      "title": "Saludo caso de uso",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hola, Daniela. \n¿Qué tal la Hackaton? Cuéntale a Scorpius_Bot!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "#Saludar_Caso",
+      "dialog_node": "node_18_1622694429097",
+      "previous_sibling": "node_6_1622651081270"
+    },
+    {
+      "type": "frame",
+      "title": "Productos",
+      "output": {
+        "generic": [
+          {
+            "title": "¿En qué puedo ayudarte?",
+            "options": [
+              {
+                "label": "Tarjetas",
+                "value": {
+                  "input": {
+                    "text": "tarjeta"
+                  }
+                }
+              },
+              {
+                "label": "CDTs",
+                "value": {
+                  "input": {
+                    "text": "queja"
+                  }
+                }
+              },
+              {
+                "label": "Créditos",
+                "value": {
+                  "input": {
+                    "text": "reclamo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@producto",
+      "dialog_node": "node_2_1622673791526",
+      "previous_sibling": "node_1_1622669804107"
+    },
+    {
+      "type": "standard",
+      "title": "Credito_Visa",
+      "output": {
+        "generic": [
+          {
+            "title": "Beneficios de tu tarjeta",
+            "source": "https://i2.wp.com/lopezdoriga.com/wp-content/uploads/2019/12/psx-20191227-112820-1.jpg?resize=980%2C550&ssl=1",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1622688209215",
+      "conditions": "@Tipo_Tarjeta:Crédito_Visa",
+      "dialog_node": "node_2_1622688209220",
+      "previous_sibling": "node_9_1622688868503"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Su solicitud se encuentra en estudio. Uno de nuestros asesores se pondrá en contacto con usted en breve."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1622688209220",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_3_1622688209220"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1622688209220",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_4_1622688209220",
+      "previous_sibling": "node_3_1622688209220"
+    },
+    {
+      "type": "standard",
+      "title": "Salir",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Fue un gusto colaborarte"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@salir:Salir",
+      "dialog_node": "node_5_1622664308709",
+      "previous_sibling": "node_6_1622664211722"
+    },
+    {
+      "type": "frame",
+      "title": "Quejas_Reclamos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Queja radicada +$ID"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "#caso",
+      "dialog_node": "node_5_1622666597996",
+      "previous_sibling": "node_5_1622664308709"
+    },
+    {
+      "type": "standard",
+      "title": "Solicitud_ Créditos",
+      "output": {
+        "generic": [
+          {
+            "title": "¿Qué tarjeta desea solicitar?",
+            "options": [
+              {
+                "label": "Débito Visa",
+                "value": {
+                  "input": {
+                    "text": "Debito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Crédito Visa",
+                "value": {
+                  "input": {
+                    "text": "Credito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Débito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Debito_MasterCard"
+                  }
+                }
+              },
+              {
+                "label": "Crédito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Credito_MasterCard"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_2_1622673791526",
+      "conditions": "@tarjeta",
+      "dialog_node": "node_5_1622688597173",
+      "previous_sibling": "node_8_1622664776788"
+    },
+    {
+      "type": "frame",
+      "title": "Saludo",
+      "output": {
+        "generic": [
+          {
+            "title": "Hola, Soy Scorpius_Bot.  Por favor Indica tu tipo de documento.",
+            "options": [
+              {
+                "label": "Cedula ciudadanía",
+                "value": {
+                  "input": {
+                    "text": "id"
+                  }
+                }
+              },
+              {
+                "label": "Pasaporte",
+                "value": {
+                  "input": {
+                    "text": "id"
+                  }
+                }
+              },
+              {
+                "label": "cedula Extranjería",
+                "value": {
+                  "input": {
+                    "text": "id"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#Saludar",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_6_1622651081270",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Motivo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "¿En qué puedo ayudarte?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#caso",
+      "dialog_node": "node_6_1622657371892",
+      "previous_sibling": "node_5_1622666597996"
+    },
+    {
+      "type": "standard",
+      "title": "Volver_Inicio_Salir",
+      "output": {
+        "generic": [
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Volver al Inicio",
+                "value": {
+                  "input": {
+                    "text": "atencion"
+                  }
+                }
+              },
+              {
+                "label": "Salir",
+                "value": {
+                  "input": {
+                    "text": "salir"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "dialog_node": "node_6_1622664211722",
+      "previous_sibling": "node_2_1622673791526"
+    },
+    {
+      "type": "frame",
+      "title": "Valida_Doc",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Gracias."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@documento",
+      "dialog_node": "node_6_1622668897343",
+      "previous_sibling": "node_18_1622694429097"
+    },
+    {
+      "type": "standard",
+      "title": "Debito_Visa",
+      "output": {
+        "generic": [
+          {
+            "title": "Así se verá tu tarjeta",
+            "source": "https://www.bbva.com.co/content/dam/public-web/global/images/micro-illustrations/current_account_dark.svg",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_5_1622688597173",
+      "conditions": "@Tipo_Tarjeta:Debito_Visa",
+      "dialog_node": "node_6_1622688597176"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1622665021079",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_7_1622666479278",
+      "previous_sibling": "node_10_1622665415709"
+    },
+    {
+      "type": "standard",
+      "title": "Afirmativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tu tarjeta está en proceso de creación. Te indicaremos una vez esté camino a tu domicilio."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1622688597176",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1622664211722"
+      },
+      "conditions": "@afirmativo",
+      "dialog_node": "node_7_1622688597176"
+    },
+    {
+      "type": "standard",
+      "dialog_node": "node_8_1622657374089",
+      "previous_sibling": "node_6_1622657371892"
+    },
+    {
+      "type": "standard",
+      "title": "Solicitud_ CDTs",
+      "output": {
+        "generic": [
+          {
+            "title": "¿Qué tarjeta desea solicitar?",
+            "options": [
+              {
+                "label": "Débito Visa",
+                "value": {
+                  "input": {
+                    "text": "Debito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Crédito Visa",
+                "value": {
+                  "input": {
+                    "text": "Credito_Visa"
+                  }
+                }
+              },
+              {
+                "label": "Débito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Debito_MasterCard"
+                  }
+                }
+              },
+              {
+                "label": "Crédito MasterCard",
+                "value": {
+                  "input": {
+                    "text": "Credito_MasterCard"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_2_1622673791526",
+      "conditions": "@tarjeta",
+      "dialog_node": "node_8_1622664776788",
+      "previous_sibling": "node_1_1622688209215"
+    },
+    {
+      "type": "standard",
+      "title": "Negativo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "La tarjeta no será tramitada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1622688597176",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1622669804107"
+      },
+      "conditions": "@negativo",
+      "dialog_node": "node_8_1622688597176",
+      "previous_sibling": "node_7_1622688597176"
+    },
+    {
+      "type": "standard",
+      "title": "Debito_Visa",
+      "output": {
+        "generic": [
+          {
+            "title": "Partes de una tarjeta Debito.",
+            "source": "https://www.bbva.com.co/content/dam/public-web/colombia/images/blog/anverso-tarjeta.png.img.768.1597841407261.png",
+            "response_type": "image"
+          },
+          {
+            "title": "¿Desea adquirirla?",
+            "options": [
+              {
+                "label": "Si",
+                "value": {
+                  "input": {
+                    "text": "Afirmativo"
+                  }
+                }
+              },
+              {
+                "label": "No",
+                "value": {
+                  "input": {
+                    "text": "Negativo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1622688209215",
+      "conditions": "@Tipo_Tarjeta:Debito_Visa",
+      "dialog_node": "node_9_1622688868503"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1622666597996",
+      "variable": "$ID",
+      "dialog_node": "slot_2_1622666948519"
+    },
+    {
+      "type": "slot",
+      "parent": "node_6_1622668897343",
+      "variable": "$ID",
+      "dialog_node": "slot_2_1622669221880"
+    },
+    {
+      "type": "standard",
+      "title": "Bienvenida",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bienvenido a BBVA"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "12345678912345678963"
+    },
+    {
+      "text": "4"
+    }
+  ],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
